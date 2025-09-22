@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootNode" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="616.0" prefWidth="1084.0" style="-fx-background-color: #17202a;" stylesheets="@../styles/crud.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.school.elite_driving.controller.WelcomePageController">
+    <children>
+        <Label layoutX="281.0" layoutY="125.0" text="Welcome to Elite Driving School" textFill="#d1eaf0">
+            <font>
+                <Font name="Microsoft YaHei UI Bold" size="32.0" />
+            </font>
+        </Label>
+        <Label layoutX="380.0" layoutY="200.0" text="Please select your user type to continue" textFill="WHITE">
+            <font>
+                <Font name="Arial" size="18.0" />
+            </font>
+        </Label>
+
+        <!-- Receptionist Login Button -->
+        <JFXButton buttonType="RAISED" layoutX="300.0" layoutY="320.0" onAction="#btnReceptionistOnAction" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #3498db; -fx-background-radius: 10;" text="Receptionist" textFill="WHITE">
+            <font>
+                <Font name="Microsoft YaHei UI Bold" size="20.0" />
+            </font>
+        </JFXButton>
+
+        <!-- Admin Login Button -->
+        <JFXButton buttonType="RAISED" layoutX="600.0" layoutY="320.0" onAction="#btnAdminOnAction" prefHeight="80.0" prefWidth="200.0" style="-fx-background-color: #e74c3c; -fx-background-radius: 10;" text="Admin" textFill="WHITE">
+            <font>
+                <Font name="Microsoft YaHei UI Bold" size="20.0" />
+            </font>
+        </JFXButton>
+
+        <!-- Receptionist Icon -->
+        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="370.0" layoutY="250.0">
+            <image>
+                <Image url="@../icons/icons8-user-100.png" />
+            </image>
+        </ImageView>
+
+        <!-- Admin Icon -->
+        <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="670.0" layoutY="250.0">
+            <image>
+                <Image url="@../icons/icons8-user-100.png" />
+            </image>
+        </ImageView>
+
+        <!-- Footer Text -->
+        <Label layoutX="413.0" layoutY="476.0" text="Elite Driving School Management System" textFill="#95a5a6">
+            <font>
+                <Font name="Arial" size="14.0" />
+            </font>
+        </Label>
+    </children>
+</AnchorPane>
