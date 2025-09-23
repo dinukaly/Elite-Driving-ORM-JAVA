@@ -1,5 +1,6 @@
 package lk.school.elite_driving.enitity;
 
+import jakarta.persistence.Cacheable;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
@@ -7,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import java.sql.Time;
 
@@ -14,10 +16,12 @@ import java.sql.Time;
 @NoArgsConstructor
 @Getter
 @Setter
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-public class Lesson {
+public class Lesson implements SuperEntity {
     @Id
-    private int lessonId;
+    private String lessonId;
     private String lessonName;
     private String lessonDescription;
     private String lessonTime;

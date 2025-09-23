@@ -1,13 +1,11 @@
 package lk.school.elite_driving.enitity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import java.sql.Date;
 import java.util.List;
@@ -16,10 +14,12 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-public class Student {
+public class Student implements SuperEntity {
     @Id
-    private int studentId;
+    private String studentId;
     private String studentName;
     private String studentEmail;
     private String studentNic;
@@ -30,8 +30,8 @@ public class Student {
     private Date registrationDate;
     @ManyToMany
     private List<Course> courses;
-    @OneToMany(mappedBy = "student")
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     private List<Payment> payments;
-    @OneToMany(mappedBy = "student")
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     private List <Lesson> lessons;
 }

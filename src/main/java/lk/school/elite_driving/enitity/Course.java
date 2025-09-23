@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import java.util.List;
 
@@ -12,10 +13,13 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
+
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
-public class Course {
+public class Course implements SuperEntity {
     @Id
-    private int courseId;
+    private String courseId;
     private String courseName;
     private String courseDescription;
     private String courseDuration;
