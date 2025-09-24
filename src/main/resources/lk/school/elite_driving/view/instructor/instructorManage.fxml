@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="rootNode" onKeyReleased="#txtConntcatOnKeyReleased" prefHeight="720.0" prefWidth="1102.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.school.elite_driving.controller.instructor.InstructorController">
+   <children>
+      <Label layoutX="26.0" layoutY="24.0" text="Instructor Management" textFill="#17202a">
+         <font>
+            <Font name="Arial Bold" size="23.0" />
+         </font>
+      </Label>
+      <Line endX="1001.5" endY="-16.0" layoutX="101.0" layoutY="74.0" startX="-101.0" startY="-10.0" />
+      <ImageView fitHeight="53.0" fitWidth="59.0" layoutX="1022.0" layoutY="4.0">
+         <image>
+            <Image url="@../../icons/icons8-user-100.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="tblInstructor" layoutX="63.0" layoutY="179.0" prefHeight="425.0" prefWidth="955.0" stylesheets="@../../styles/table.css">
+        <columns>
+          <TableColumn fx:id="colInstructorId" prefWidth="90.0" text="Instructor Id" />
+            <TableColumn fx:id="colName" prefWidth="127.00001525878906" text="Name" />
+            <TableColumn fx:id="colAddress" prefWidth="125.0" text="Address" />
+            <TableColumn fx:id="colContact" prefWidth="139.0" text="Contact" />
+            <TableColumn fx:id="colEmail" prefWidth="140.0" text="Email" />
+            <TableColumn fx:id="colSpecialization" minWidth="0.0" prefWidth="147.0" text="Specialization" />
+            <TableColumn fx:id="colAvailability" prefWidth="90.00006103515625" text="Availability" />
+            <TableColumn fx:id="colActions" prefWidth="96.0" text="Actions" />
+        </columns>
+      </TableView>
+      <JFXButton fx:id="addButton" buttonType="RAISED" layoutX="914.0" layoutY="96.0" onAction="#btnAddonAction" prefHeight="35.0" prefWidth="103.0" stylesheets="@../../styles/buttons.css" text="Add New" textFill="#f8f8f5">
+         <font>
+            <Font name="Arial Bold" size="10.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <ImageView fitHeight="43.0" fitWidth="16.0" layoutX="863.0" layoutY="349.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../icons/icons8-update-24.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="txtSearch" layoutX="639.0" layoutY="96.0" onAction="#txtSearch" prefHeight="36.0" prefWidth="252.0" promptText="Search " />
+      <Text fx:id="lblWaterSourceName" fill="#363434" layoutX="63.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All Instructors">
+         <font>
+            <Font name="Ebrima Bold" size="16.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
