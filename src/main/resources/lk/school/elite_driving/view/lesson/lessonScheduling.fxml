@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="rootNode" prefHeight="720.0" prefWidth="1102.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.school.elite_driving.controller.lesson.LessonSchedulingController">
+   <children>
+      <Label layoutX="38.0" layoutY="24.0" text="Lessons Scheduling" textFill="#17202a">
+         <font>
+            <Font name="Arial Bold" size="23.0" />
+         </font>
+      </Label>
+      <Line endX="1001.5" endY="-16.0" layoutX="101.0" layoutY="74.0" startX="-101.0" startY="-10.0" />
+      <ImageView fitHeight="53.0" fitWidth="59.0" layoutX="1022.0" layoutY="4.0">
+         <image>
+            <Image url="@../../icons/icons8-user-100.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="tblLessons" layoutX="74.0" layoutY="201.0" prefHeight="474.0" prefWidth="971.0" stylesheets="@../../styles/table.css">
+        <columns>
+          <TableColumn fx:id="colStudentId" prefWidth="141.0" text="Student Id" />
+            <TableColumn fx:id="colLesson" prefWidth="144.00001525878906" text="Lesson" />
+            <TableColumn fx:id="colTime" prefWidth="162.0" text="Time" />
+            <TableColumn fx:id="colCourseId" prefWidth="175.0" text="Course Id" />
+            <TableColumn fx:id="colInstructorId" prefWidth="119.0" text="Instructor Id" />
+            <TableColumn fx:id="colStatus" prefWidth="119.0" text="Status" />
+            <TableColumn fx:id="colActions" prefWidth="119.0" text="Actions" />
+        </columns>
+      </TableView>
+      <JFXButton fx:id="addButton" buttonType="RAISED" layoutX="924.0" layoutY="106.0" onAction="#btnAddonAction" prefHeight="35.0" prefWidth="103.0" stylesheets="@../../styles/buttons.css" text="Add New" textFill="#f8f8f5">
+         <font>
+            <Font name="Arial Bold" size="10.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <TextField fx:id="txtSearch" layoutX="649.0" layoutY="106.0" onAction="#txtSearch" prefHeight="36.0" prefWidth="252.0" promptText="Search from student id " />
+      <Text fx:id="lblWaterSourceName" fill="#363434" layoutX="73.0" layoutY="130.0" strokeType="OUTSIDE" strokeWidth="0.0" text="All Lesson Schedules">
+         <font>
+            <Font name="Ebrima Bold" size="16.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
