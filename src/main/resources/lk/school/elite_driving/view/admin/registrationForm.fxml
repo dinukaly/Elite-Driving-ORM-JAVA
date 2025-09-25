@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootNode" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="705.0" prefWidth="1132.0" style="-fx-background-color: #17202a;" stylesheets="@../../styles/crud.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.school.elite_driving.controller.admin.AdminRegistrationController">
+   <children>
+      <Label layoutX="746.0" layoutY="126.0" text="Register Here" textFill="#d1eaf0">
+         <font>
+            <Font name="Microsoft YaHei UI" size="22.0" />
+         </font>
+      </Label>
+      <Label layoutX="530.0" layoutY="240.0" text="Password" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtPassword" layoutX="530.0" layoutY="268.0" prefHeight="39.0" prefWidth="231.0" />
+      <JFXButton buttonType="RAISED" layoutX="750.0" layoutY="558.0" onAction="#btnRegesterOnAction" prefHeight="39.0" prefWidth="135.0" style="-fx-background-color: brown;" text="Register" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <Line endX="304.0" layoutX="774.0" layoutY="509.0" startX="-217.5" stroke="WHITE" />
+      <Label layoutX="598.0" layoutY="73.0" text="The Elite Driving School" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="45.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="705.0" fitWidth="489.0" layoutX="-18.0">
+         <image>
+            <Image url="@../../icons/Gemini_Generated_Image_f42xu2f42xu2f42x.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="txtUserName" layoutX="844.0" layoutY="268.0" prefHeight="39.0" prefWidth="231.0" />
+      <Label layoutX="844.0" layoutY="240.0" text="User Name" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="15.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

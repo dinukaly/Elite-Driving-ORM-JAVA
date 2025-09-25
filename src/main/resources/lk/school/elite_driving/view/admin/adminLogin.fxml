@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootNode" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="705.0" prefWidth="1400.0" style="-fx-background-color: #17202a;" stylesheets="@../../styles/crud.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.school.elite_driving.controller.admin.AdminLoginController">
+   <children>
+      <Label layoutX="315.0" layoutY="164.0" text="Admin Login" textFill="#d1eaf0">
+         <font>
+            <Font name="Microsoft YaHei UI Bold" size="27.0" />
+         </font>
+      </Label>
+      <Label layoutX="193.0" layoutY="258.0" text="User Name" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label layoutX="189.0" layoutY="375.0" text="Password" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtUserId" layoutX="191.0" layoutY="298.0" onKeyReleased="#txtUserNameOnKeyReleased" prefHeight="39.0" prefWidth="385.0" style="-fx-background-color: #f8f9f9;" />
+      <JFXButton buttonType="RAISED" layoutX="316.0" layoutY="489.0" onAction="#btnLoginOnAction" prefHeight="39.0" prefWidth="135.0" style="-fx-background-color: brown;" text="Login" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="15.0" />
+         </font>
+      </JFXButton>
+      <Line endX="430.0" layoutX="302.0" layoutY="555.0" startX="-240.0" stroke="WHITE" />
+      <Label layoutX="228.0" layoutY="612.0" text="Don't you have an account ?" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="13.0" />
+         </font>
+      </Label>
+      <JFXButton buttonType="RAISED" layoutX="430.0" layoutY="603.0" onAction="#btnRegesterOnAction" prefHeight="35.0" prefWidth="95.0" style="-fx-background-color: brown;" text="Register" textFill="WHITE">
+         <font>
+            <Font name="Calibri Bold" size="14.0" />
+         </font>
+      </JFXButton>
+      <ImageView fitHeight="712.0" fitWidth="512.0" layoutX="868.0" layoutY="-2.0">
+         <image>
+            <Image url="@../../icons/Gemini_Generated_Image_6k2yqx6k2yqx6k2y.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="456.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true" />
+      <PasswordField fx:id="txtPassword" layoutX="191.0" layoutY="412.0" onKeyReleased="#txtPasswordOnKeyReleased" prefHeight="39.0" prefWidth="385.0" />
+   </children>
+</AnchorPane>
