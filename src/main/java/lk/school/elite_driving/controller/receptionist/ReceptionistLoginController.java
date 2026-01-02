@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
@@ -65,7 +64,7 @@ public class ReceptionistLoginController {
     public void btnRegesterOnAction(ActionEvent actionEvent) {
         try {
             // Load the registration form
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/lk/school/elite_driving/view/receptionist/ReceptionistRegistration.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/lk.school.elite_driving/view/receptionist/ReceptionistRegistration.fxml"));
             Parent root = loader.load();
             
             Stage stage = new Stage();
@@ -91,7 +90,7 @@ public class ReceptionistLoginController {
 
     private void navigateToReceptionistDashboard() {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/lk/school/elite_driving/view/receptionist/ReceptionistDashboard.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/lk.school.elite_driving/view/receptionist/ReceptionistDashboard.fxml"));
             Parent root = loader.load();
             
             Stage stage = new Stage();

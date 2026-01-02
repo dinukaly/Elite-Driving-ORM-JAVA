@@ -12,10 +12,9 @@ import lk.school.elite_driving.dto.StudentDTO;
 import lk.school.elite_driving.enitity.Course;
 import lk.school.elite_driving.enitity.Payment;
 import lk.school.elite_driving.enitity.Student;
-import org.hibernate.Session;
+import lk.school.elite_driving.exception.RegistrationException;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class StudentBOImpl implements StudentBO {
@@ -36,14 +35,22 @@ public class StudentBOImpl implements StudentBO {
             student.setCourses(courses);
 
             studentDAO.save(student, session);
-
             // Handle payments separately to avoid circular reference issues
             if (studentDTO.getPayments() != null && !studentDTO.getPayments().isEmpty()) {
-                for (PaymentDTO paymentDTO : studentDTO.getPayments()) {
+
+                studentDTO.getPayments().forEach(paymentDTO -> {
                     Payment payment = DTOMapper.toEntity(paymentDTO, session);
                     payment.setStudent(student);
                     paymentDAO.save(payment, session);
-                }
+                });
+
+
+
+//                for (PaymentDTO paymentDTO : studentDTO.getPayments()) {
+//                    Payment payment = DTOMapper.toEntity(paymentDTO, session);
+//                    payment.setStudent(student);
+//                    paymentDAO.save(payment, session);
+//                }
             }
         });
     }
@@ -75,8 +82,8 @@ public class StudentBOImpl implements StudentBO {
                 studentDAO.update(updatedStudent, session);
                 return true;
             });
-        } catch (RuntimeException e) {
-            throw new RuntimeException("Error while updating student", e);
+        } catch (RegistrationException e) {
+            throw new RegistrationException("Error while updating student", e);
         }
     }
 

@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import java.sql.Date;
 import java.util.List;
@@ -14,8 +13,6 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
-@Cacheable
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
 public class Student implements SuperEntity {
     @Id
@@ -27,6 +24,7 @@ public class Student implements SuperEntity {
     private String studentAddress;
     private double totalFee; // sum of courses
     private double remainingFee;// auto updated
+    private double downPayment; // initial payment
     private Date registrationDate;
     @ManyToMany
     private List<Course> courses;
@@ -34,4 +32,17 @@ public class Student implements SuperEntity {
     private List<Payment> payments;
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     private List <Lesson> lessons;
+
+    public Student(String studentId, String studentName, String studentEmail, String studentNic, String studentContact, String studentAddress, double totalFee, double remainingFee, double downPayment, Date registrationDate) {
+        this.studentId = studentId;
+        this.studentName = studentName;
+        this.studentEmail = studentEmail;
+        this.studentNic = studentNic;
+        this.studentContact = studentContact;
+        this.studentAddress = studentAddress;
+        this.totalFee = totalFee;
+        this.remainingFee = remainingFee;
+        this.downPayment = downPayment;
+        this.registrationDate = registrationDate;
+    }
 }

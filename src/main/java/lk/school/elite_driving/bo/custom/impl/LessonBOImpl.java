@@ -1,6 +1,5 @@
 package lk.school.elite_driving.bo.custom.impl;
 
-import lk.school.elite_driving.bo.BOFactory;
 import lk.school.elite_driving.bo.custom.LessonBO;
 import lk.school.elite_driving.bo.util.DTOMapper;
 import lk.school.elite_driving.bo.util.TransactionalUtil;
@@ -15,7 +14,6 @@ import lk.school.elite_driving.enitity.Instructor;
 import lk.school.elite_driving.enitity.Lesson;
 import lk.school.elite_driving.enitity.Student;
 import lk.school.elite_driving.exception.SchedulingException;
-import org.hibernate.Session;
 
 import java.util.ArrayList;
 import java.util.List;

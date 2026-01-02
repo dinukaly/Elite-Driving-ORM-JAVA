@@ -10,7 +10,10 @@ import javafx.scene.Cursor;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.TableCell;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -74,12 +77,12 @@ public class InstructorController {
                 btnEdit.setStyle("-fx-background-color: #28a745; -fx-text-fill: white;");
                 btnDelete.setStyle("-fx-background-color: #dc3545; -fx-text-fill: white;");
 
-                ImageView editIcon = new ImageView(new Image(getClass().getResourceAsStream("/lk/school/elite_driving/icons/icons8-update-24.png")));
+                ImageView editIcon = new ImageView(new Image(getClass().getResourceAsStream("/lk.school.elite_driving/icons/icons8-update-24.png")));
                 editIcon.setFitWidth(16);
                 editIcon.setFitHeight(16);
                 btnEdit.setGraphic(editIcon);
 
-                ImageView deleteIcon = new ImageView(new Image(getClass().getResourceAsStream("/lk/school/elite_driving/icons/icons8-delete-30.png")));
+                ImageView deleteIcon = new ImageView(new Image(getClass().getResourceAsStream("/lk.school.elite_driving/icons/icons8-delete-30.png")));
                 deleteIcon.setFitWidth(16);
                 deleteIcon.setFitHeight(16);
                 btnDelete.setGraphic(deleteIcon);
@@ -148,7 +151,7 @@ public class InstructorController {
 
     private void updateInstructor(InstructorTM instructorTM, ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/lk/school/elite_driving/view/instructor/updateInstructorForm.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/lk.school.elite_driving/view/instructor/updateInstructorForm.fxml"));
             Parent root = loader.load();
             UpdateInstructorFormController controller = loader.getController();
             controller.initData(instructorTM);
@@ -169,7 +172,7 @@ public class InstructorController {
 
     public void btnAddonAction(ActionEvent actionEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/lk/school/elite_driving/view/instructor/addInstructorForm.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/lk.school.elite_driving/view/instructor/addInstructorForm.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();

@@ -22,10 +22,8 @@ public class TransactionalUtil {
         } catch (RuntimeException e) {
             if (tx != null) tx.rollback();
             throw e;
-        } catch (Exception e) {
-            if (tx != null) tx.rollback();
-            throw new RuntimeException("Transaction failed", e);
-        } finally {
+        }
+       finally {
             session.close();
         }
     }
@@ -42,10 +40,7 @@ public class TransactionalUtil {
         } catch (RuntimeException e) {
             if (tx != null) tx.rollback();
             throw e;
-        } catch (Exception e) {
-            if (tx != null) tx.rollback();
-            throw new RuntimeException("Transaction failed", e);
-        } finally {
+        }  finally {
             session.close();
         }
     }

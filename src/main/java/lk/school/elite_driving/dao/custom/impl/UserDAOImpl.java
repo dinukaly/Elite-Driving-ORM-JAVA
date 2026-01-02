@@ -15,22 +15,26 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public void update(User entity, Session session) {
-
+        session.merge(entity);
     }
 
     @Override
     public void delete(String pk, Session session) {
-
+        User user = session.get(User.class, pk);
+        if (user != null) {
+            session.remove(user);
+        }
     }
 
     @Override
     public List<User> getAll(Session session) {
-        return List.of();
+        return session.createQuery("FROM User", User.class).list();
     }
 
     @Override
     public Optional<User> getById(String pk, Session session) {
-        return Optional.empty();
+        User user = session.get(User.class, pk);
+        return Optional.ofNullable(user);
     }
 
     @Override

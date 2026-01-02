@@ -10,8 +10,10 @@ import lombok.NoArgsConstructor;
 public class InstructorDTO {
     private String instructorId;
     private String instructorName;
-    private String instructorEmail;
-    private String instructorPhone;
     private String instructorAddress;
+    private String instructorPhone;
+    private String instructorEmail;
+    private String instructorSpecialization;
+
     private boolean isActive;
 }

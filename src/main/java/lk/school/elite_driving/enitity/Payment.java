@@ -1,6 +1,6 @@
 package lk.school.elite_driving.enitity;
 
-import jakarta.persistence.Cacheable;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
@@ -8,7 +8,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import java.sql.Date;
 
@@ -16,8 +15,6 @@ import java.sql.Date;
 @NoArgsConstructor
 @Getter
 @Setter
-@Cacheable
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
 public class Payment implements SuperEntity {
     @Id
@@ -28,4 +25,11 @@ public class Payment implements SuperEntity {
 
     @ManyToOne
     private Student student;
+
+    public Payment(String paymentId, double amount, Date paymentDate, String status) {
+        this.paymentId = paymentId;
+        this.amount = amount;
+        this.paymentDate = paymentDate;
+        this.status = status;
+    }
 }

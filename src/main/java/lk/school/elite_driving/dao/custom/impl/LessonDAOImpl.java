@@ -12,19 +12,19 @@ public class LessonDAOImpl implements LessonDAO {
     
     @Override
     public void save(Lesson entity, Session session) {
-        session.save(entity);
+        session.persist(entity);
     }
 
     @Override
     public void update(Lesson entity, Session session) {
-        session.update(entity);
+        session.merge(entity);
     }
 
     @Override
     public void delete(String pk, Session session) {
         Lesson lesson = session.get(Lesson.class, pk);
         if (lesson != null) {
-            session.delete(lesson);
+            session.remove(lesson);
         }
     }
 

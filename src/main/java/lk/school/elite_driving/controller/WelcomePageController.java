@@ -12,7 +12,7 @@ public class WelcomePageController {
     public AnchorPane rootNode;
 
     public void btnReceptionistOnAction(ActionEvent actionEvent) throws IOException {
-        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/lk/school/elite_driving/view/receptionist/ReceptionistLogin.fxml"));
+        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/lk.school.elite_driving/view/receptionist/receptionistLogin.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(anchorPane);
         stage.setTitle("Receptionist Login");
@@ -22,7 +22,7 @@ public class WelcomePageController {
         prevStage.close();
     }
     public void btnAdminOnAction(ActionEvent actionEvent) throws IOException {
-        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/lk/school/elite_driving/view/admin/AdminLogin.fxml"));
+        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/lk.school.elite_driving/view/admin/adminLogin.fxml"));
         Stage stage = new Stage();
         Scene scene = new Scene(anchorPane);
         stage.setTitle("Admin Login");

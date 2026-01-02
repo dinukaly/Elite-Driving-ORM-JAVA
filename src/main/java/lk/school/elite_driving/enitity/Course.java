@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import java.util.List;
 
@@ -14,14 +13,11 @@ import java.util.List;
 @Getter
 @Setter
 
-@Cacheable
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Entity
 public class Course implements SuperEntity {
     @Id
     private String courseId;
     private String courseName;
-    private String courseDescription;
     private String courseDuration;
     private double courseFee;
 
@@ -33,4 +29,11 @@ public class Course implements SuperEntity {
 
     @OneToMany(mappedBy = "course", cascade = CascadeType.ALL)
     private List<Instructor> instructors;
+
+    public Course(String courseId, String courseName, String courseDuration, double courseFee) {
+        this.courseId = courseId;
+        this.courseName = courseName;
+        this.courseDuration = courseDuration;
+        this.courseFee = courseFee;
+    }
 }

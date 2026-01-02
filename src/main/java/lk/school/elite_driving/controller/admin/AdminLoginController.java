@@ -2,12 +2,10 @@ package lk.school.elite_driving.controller.admin;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.school.elite_driving.bo.BOFactory;
@@ -16,7 +14,6 @@ import lk.school.elite_driving.dto.UserDTO;
 import lk.school.elite_driving.exception.InvalidCredentialsException;
 import lk.school.elite_driving.exception.LoginException;
 import lk.school.elite_driving.util.AlertUtil;
-
 
 import java.io.IOException;
 
@@ -54,7 +51,7 @@ public class AdminLoginController {
 
     private void navigateToAdminDashboard() {
         try {
-            AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/lk/school/elite_driving/view/admin/adminDashboard.fxml"));
+            AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/lk.school.elite_driving/view/admin/adminDashboard.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(anchorPane));
             stage.show();
@@ -66,7 +63,7 @@ public class AdminLoginController {
     }
 
     public void btnRegesterOnAction(ActionEvent actionEvent) throws IOException {
-            AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/lk/school/elite_driving/view/admin/registrationForm.fxml"));
+            AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/lk.school.elite_driving/view/admin/registrationForm.fxml"));
             Stage stage = new Stage();
             stage.setScene(new Scene(anchorPane));
             stage.show();

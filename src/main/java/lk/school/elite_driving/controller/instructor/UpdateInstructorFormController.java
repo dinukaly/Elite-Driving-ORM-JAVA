@@ -1,14 +1,11 @@
 package lk.school.elite_driving.controller.instructor;
 
-import com.jfoenix.controls.JFXComboBox;
-import com.jfoenix.controls.JFXTextField;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import lk.school.elite_driving.bo.BOFactory;
@@ -16,6 +13,7 @@ import lk.school.elite_driving.bo.custom.InstructorBO;
 import lk.school.elite_driving.dto.InstructorDTO;
 import lk.school.elite_driving.tm.InstructorTM;
 import lk.school.elite_driving.util.AlertUtil;
+import lk.school.elite_driving.util.InputValidator;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -44,20 +42,22 @@ public class UpdateInstructorFormController implements Initializable {
     }
 
     public void btnUpdateOnAction(ActionEvent actionEvent) {
-        try {
-            InstructorDTO instructorDTO = new InstructorDTO(
-                    instructorId.getText(),
-                    txtName.getText(),
-                    txtAddress.getText(),
-                    txtContact.getText(),
-                    txtEmail.getText(),
-                    (String) cmbSpecialization.getValue(),
-                    checkAvailability.isSelected()
-            );
-            instructorBO.updateInstructor(instructorDTO);
-            AlertUtil.showConfirmation("Update Success", "Instructor updated successfully.");
-        } catch (Exception e) {
-            AlertUtil.showError("Failed to update instructor: " + e.getMessage());
+        if(validateFields()) {
+            try {
+                InstructorDTO instructorDTO = new InstructorDTO(
+                        instructorId.getText(),
+                        txtName.getText(),
+                        txtAddress.getText(),
+                        txtContact.getText(),
+                        txtEmail.getText(),
+                        (String) cmbSpecialization.getValue(),
+                        checkAvailability.isSelected()
+                );
+                instructorBO.updateInstructor(instructorDTO);
+                AlertUtil.showConfirmation("Update Success", "Instructor updated successfully.");
+            } catch (Exception e) {
+                AlertUtil.showError("Failed to update instructor: " + e.getMessage());
+            }
         }
     }
 
@@ -83,5 +83,17 @@ public class UpdateInstructorFormController implements Initializable {
                 "Defensive Driving Training",
                 "Advanced Driving Training"
         );
+    }
+
+    private boolean validateFields() {
+        InputValidator.clearStyle(txtName,txtEmail,txtAddress,txtContact,cmbSpecialization);
+        return InputValidator.isNotEmpty(txtName, "Instructor Name") &&
+                InputValidator.isAlphabetic(txtName, "Instructor Name") &&
+                InputValidator.isNotEmpty(txtEmail, "Email") &&
+                InputValidator.isValidEmail(txtEmail, "Email") &&
+                InputValidator.isNotEmpty(txtAddress, "Address") &&
+                InputValidator.isNotEmpty(txtContact, "Contact") &&
+                InputValidator.isValidPhone(txtContact, "Contact") &&
+                InputValidator.isSelected(cmbSpecialization, "Specialization");
     }
 }

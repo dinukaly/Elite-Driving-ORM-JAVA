@@ -1,28 +1,29 @@
 package lk.school.elite_driving.enitity;
 
-import jakarta.persistence.Cacheable;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
+
+import java.io.Serializable;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@Cacheable
-@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+
+
 @Entity
-public class User implements SuperEntity {
+public class User implements SuperEntity, Serializable {
     @Id
+    @Column(name = "user_id")
     private String userId;
+    @Column(name = "user_name")
     private String userName;
+    @Column(name = "password")
     private String password;
-    private enum UserRole{
-        RECEPTIONIST,
-        ADMIN
-    }
+    @Enumerated(EnumType.STRING)
+    @Column(name = "user_role")
+    private UserRole userRole;
 }

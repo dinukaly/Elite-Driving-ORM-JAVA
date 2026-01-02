@@ -31,11 +31,10 @@
           <TableColumn fx:id="colPaymentId" prefWidth="100.0" text="Payment Id" />
           <TableColumn fx:id="colStudentId" prefWidth="128.0" text="Student Id" />
             <TableColumn fx:id="colDownPayment" prefWidth="127.0" text="Down Payment" />
-            <TableColumn fx:id="colBalance" prefWidth="129.0" text="Total Paid" />
-            <TableColumn fx:id="colInstallment" prefWidth="137.0" text="Due Amount" />
+            <TableColumn fx:id="colBalance" prefWidth="129.0" text="Balance" />
+
             <TableColumn fx:id="colPaidDate" prefWidth="116.00006103515625" text="Paid date" />
             <TableColumn fx:id="colStatus" prefWidth="153.00006103515625" text="Status" />
-            <TableColumn fx:id="colActions" prefWidth="153.00006103515625" text="Actions" />
         </columns>
       </TableView>
       <Label layoutX="805.0" layoutY="116.0" text="Balance" textFill="#17202a">

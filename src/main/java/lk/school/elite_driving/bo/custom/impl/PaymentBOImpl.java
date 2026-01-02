@@ -9,7 +9,6 @@ import lk.school.elite_driving.dto.PaymentDTO;
 import lk.school.elite_driving.enitity.Payment;
 import lk.school.elite_driving.enitity.Student;
 import lk.school.elite_driving.exception.PaymentException;
-import org.hibernate.Session;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +30,18 @@ public class PaymentBOImpl implements PaymentBO {
                     Student student = session.get(Student.class, paymentDTO.getStudent().getStudentId());
                     if (student == null) {
                         throw new RuntimeException("Student not found");
+                    }
+
+                    // Validate payment amount to prevent overpayment
+                    if (paymentDTO.getAmount() <= 0) {
+                        throw new RuntimeException("Payment amount must be greater than 0");
+                    }
+
+                    // Check if payment amount exceeds remaining fee
+                    if (paymentDTO.getAmount() > student.getRemainingFee()) {
+                        throw new RuntimeException("Payment amount LKR" + paymentDTO.getAmount() + 
+                            " exceeds remaining fee LKR" + student.getRemainingFee() + 
+                            ". Please enter a valid amount.");
                     }
 
                     double remainingFee = student.getRemainingFee() - paymentDTO.getAmount();

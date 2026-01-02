@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rootNode" prefHeight="720.0" prefWidth="1102.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.school.elite_driving.controller.receptionist.ReceptionistManageController">
+   <children>
+      <Label layoutX="38.0" layoutY="24.0" text="Receptionist Management" textFill="#17202a">
+         <font>
+            <Font name="Arial Bold" size="23.0" />
+         </font>
+      </Label>
+      <Line endX="1001.5" endY="-16.0" layoutX="101.0" layoutY="74.0" startX="-101.0" startY="-10.0" />
+      <ImageView fitHeight="53.0" fitWidth="59.0" layoutX="1022.0" layoutY="4.0">
+         <image>
+            <Image url="@../../icons/icons8-user-100.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="tblReceptionist" layoutX="159.0" layoutY="149.0" prefHeight="472.0" prefWidth="785.0" stylesheets="@../../styles/table.css">
+        <columns>
+          <TableColumn fx:id="colReceptionistId" prefWidth="200.0" text="Receptionist Id" />
+            <TableColumn fx:id="colReceptionistName" prefWidth="300.0" text="Receptionist Name" />
+            <TableColumn fx:id="colUserRole" prefWidth="200.0" text="Role" />
+            <TableColumn fx:id="colActions" prefWidth="241.0" text="Actions" />
+        </columns>
+      </TableView>
+      <JFXButton fx:id="addButton" buttonType="RAISED" layoutX="919.0" layoutY="76.0" onAction="#btnAddonAction" prefHeight="35.0" prefWidth="103.0" stylesheets="@../../styles/buttons.css" text="Add New" textFill="#f8f8f5">
+         <font>
+            <Font name="Arial Bold" size="10.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </JFXButton>
+      <TextField fx:id="txtSearch" layoutX="648.0" layoutY="76.0" onAction="#txtSearch" onKeyReleased="#txtSearchKeyReleased" prefHeight="36.0" prefWidth="252.0" promptText="Search " />
+   </children>
+</AnchorPane>

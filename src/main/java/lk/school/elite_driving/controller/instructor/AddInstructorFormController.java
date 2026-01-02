@@ -6,16 +6,13 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
 import lk.school.elite_driving.bo.BOFactory;
 import lk.school.elite_driving.bo.custom.InstructorBO;
-import lk.school.elite_driving.bo.util.TransactionalUtil;
 import lk.school.elite_driving.dto.InstructorDTO;
-import org.hibernate.Session;
+import lk.school.elite_driving.util.InputValidator;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.function.Function;
 
 public class AddInstructorFormController implements Initializable {
     private final InstructorBO instructorBO = (InstructorBO) BOFactory.getBoFactory().getBO(BOFactory.BOTypes.INSTRUCTOR);
@@ -29,54 +26,48 @@ public class AddInstructorFormController implements Initializable {
     public ComboBox<String> cmbSpecialization;
 
     public void addButtonOnAction(ActionEvent actionEvent) {
-        try {
-            // Get form data
-            String name = txtName.getText().trim();
-            String email = txtEmail.getText().trim();
-            String address = txtAddress.getText().trim();
-            String contact = txtContact.getText().trim();
-            String specialization = cmbSpecialization.getValue();
-            boolean isActive = checkAvailability.isSelected();
+        if(validateFields()) {
+            try {
+                // Get form data
+                String name = txtName.getText().trim();
+                String email = txtEmail.getText().trim();
+                String address = txtAddress.getText().trim();
+                String contact = txtContact.getText().trim();
+                String specialization = cmbSpecialization.getValue();
+                boolean isActive = checkAvailability.isSelected();
 
-            // Validate required fields
-            if (name.isEmpty() || email.isEmpty() || address.isEmpty() || contact.isEmpty() || specialization == null) {
-                // You might want to show an alert here
-                System.out.println("Please fill all required fields");
-                return;
+
+                // Generate new instructor ID
+                String newInstructorId = getNewUserId();
+
+                // Create InstructorDTO
+                InstructorDTO instructorDTO = new InstructorDTO(
+                        newInstructorId,
+                        name,
+                        address,
+                        contact,
+                        email,
+                        specialization,
+                        isActive
+                );
+
+                // Save instructor using BO and TransactionalUtil
+                boolean success = instructorBO.addInstructor(instructorDTO);
+
+                if (success) {
+                    // Update the instructorId label with the generated ID
+                    instructorId.setText(newInstructorId);
+                    clearForm();
+
+                    System.out.println("Instructor added successfully with ID: " + newInstructorId);
+                } else {
+                    System.out.println("Failed to add instructor");
+                }
+
+            } catch (Exception e) {
+                System.err.println("Error adding instructor: " + e.getMessage());
+                e.printStackTrace();
             }
-
-            // Generate new instructor ID
-            String newInstructorId = getNewUserId();
-
-            // Create InstructorDTO
-            InstructorDTO instructorDTO = new InstructorDTO(
-                    newInstructorId,
-                    name,
-                    address,
-                    contact,
-                    email,
-                    specialization,
-                    isActive
-            );
-
-            // Save instructor using BO and TransactionalUtil
-            boolean success = instructorBO.addInstructor(instructorDTO);
-
-            if (success) {
-                // Update the instructorId label with the generated ID
-                instructorId.setText(newInstructorId);
-
-                // Clear form fields
-                clearForm();
-
-                System.out.println("Instructor added successfully with ID: " + newInstructorId);
-            } else {
-                System.out.println("Failed to add instructor");
-            }
-
-        } catch (Exception e) {
-            System.err.println("Error adding instructor: " + e.getMessage());
-            e.printStackTrace();
         }
     }
 
@@ -91,6 +82,7 @@ public class AddInstructorFormController implements Initializable {
         txtContact.clear();
         cmbSpecialization.setValue(null);
         checkAvailability.setSelected(false);
+        InputValidator.clearStyle(txtName,txtEmail,txtAddress,txtContact,cmbSpecialization);
     }
 
     @Override
@@ -117,5 +109,17 @@ public class AddInstructorFormController implements Initializable {
     String getNewUserId() {
         return instructorBO.getNewInstructorId();
 
+    }
+
+    private boolean validateFields() {
+        InputValidator.clearStyle(txtName,txtEmail,txtAddress,txtContact,cmbSpecialization);
+        return InputValidator.isNotEmpty(txtName, "Instructor Name") &&
+                InputValidator.isAlphabetic(txtName, "Instructor Name") &&
+                InputValidator.isNotEmpty(txtEmail, "Email") &&
+                InputValidator.isValidEmail(txtEmail, "Email") &&
+                InputValidator.isNotEmpty(txtAddress, "Address") &&
+                InputValidator.isNotEmpty(txtContact, "Contact") &&
+                InputValidator.isValidPhone(txtContact, "Contact") &&
+                InputValidator.isSelected(cmbSpecialization, "Specialization");
     }
 }

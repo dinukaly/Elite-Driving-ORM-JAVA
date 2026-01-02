@@ -1,11 +1,6 @@
 package lk.school.elite_driving.bo;
 
-import lk.school.elite_driving.bo.custom.impl.AuthBOImpl;
-import lk.school.elite_driving.bo.custom.impl.CourseBOImpl;
-import lk.school.elite_driving.bo.custom.impl.InstructorBOImpl;
-import lk.school.elite_driving.bo.custom.impl.PaymentBOImpl;
-import lk.school.elite_driving.bo.custom.impl.StudentBOImpl;
-import lk.school.elite_driving.bo.custom.impl.LessonBOImpl;
+import lk.school.elite_driving.bo.custom.impl.*;
 
 public class BOFactory {
  private static BOFactory boFactory;
@@ -20,21 +15,14 @@ public class BOFactory {
         USER, COURSE, LESSON, STUDENT, PAYMENT, INSTRUCTOR
     }
     public SuperBO getBO(BOTypes botypes){
-        switch (botypes){
-            case USER:
-                return new AuthBOImpl();
-//            case COURSE:
-//                return new CourseBOImpl();
-            case INSTRUCTOR:
-                return new InstructorBOImpl();
-            case STUDENT:
-                return new StudentBOImpl();
-            case PAYMENT:
-                return new PaymentBOImpl();
-            case LESSON:
-                return new LessonBOImpl();
-            default:
-                return null;
-        }
+        return switch (botypes) {
+            case USER -> new AuthBOImpl();
+            case COURSE -> new CourseBOImpl();
+            case INSTRUCTOR -> new InstructorBOImpl();
+            case STUDENT -> new StudentBOImpl();
+            case PAYMENT -> new PaymentBOImpl();
+            case LESSON -> new LessonBOImpl();
+            default -> null;
+        };
     }
 }

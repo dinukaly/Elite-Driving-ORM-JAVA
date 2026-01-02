@@ -47,7 +47,7 @@ public class AdminRegistrationController implements Initializable {
     }
 
     public void loadLoginPage() throws IOException {
-        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/lk/school/elite_driving/view/admin/adminLogin.fxml"));
+        AnchorPane anchorPane = FXMLLoader.load(getClass().getResource("/lk.school.elite_driving/view/admin/adminLogin.fxml"));
         Stage stage = new Stage();
         stage.setScene(new Scene(anchorPane));
         stage.show();
